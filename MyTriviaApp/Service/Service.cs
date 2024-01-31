@@ -9,6 +9,6 @@ namespace MyTriviaApp.Service
 {
     public class Service
     {
-       
+       List<User> users = new List<User>();
     }
 }

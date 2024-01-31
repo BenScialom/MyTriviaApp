@@ -11,5 +11,7 @@ namespace MyTriviaApp.Models
         private string username;
         private string password;
         public string UserName { get { return username; } set { password = value; } }
+        public string Password { get { return password; } set { password = value; } }
+       
     }
 }
