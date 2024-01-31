@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MyTriviaApp.ViewModels.LoginViewModel"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="LoginViewModel">
+    <VerticalStackLayout Margin="20">
+        <Label
+            FontSize="Large"
+            HorizontalOptions="Center"
+            Text="Login" />
+        <Label Text="Username: " />
+        <Entry Placeholder="Enter Username" />
+        <Label HorizontalOptions="Start" Text="Password: " />
+        <Entry IsPassword="True" Placeholder="Enter Password" />
+        <Button
+            x:Name="Login"
+            HorizontalOptions="Center"
+            Text="Login" />
+    </VerticalStackLayout>
+</ContentPage>
