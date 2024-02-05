@@ -16,6 +16,7 @@
         <Button
             x:Name="Login"
             HorizontalOptions="Center"
-            Text="Login" />
+            Text="Login"
+            />
     </VerticalStackLayout>
 </ContentPage>
