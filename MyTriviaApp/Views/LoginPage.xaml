@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="MyTriviaApp.ViewModels.LoginViewModel"
+    x:Class="MyTriviaApp.Views.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="LoginViewModel">
+   xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
+    x:DataType="vm:LoginPageViewModel"
+    Title="Login">
     <VerticalStackLayout Margin="20">
         <Label
             FontSize="Large"
             HorizontalOptions="Center"
             Text="Login" />
         <Label Text="Username: " />
-        <Entry Placeholder="Enter Username" />
+        <Entry Text="{Binding UserName}" Placeholder="Enter Username" />
         <Label HorizontalOptions="Start" Text="Password: " />
-        <Entry IsPassword="True" Placeholder="Enter Password" />
-        <Button
+        <Entry Text="{Binding Password}" IsPassword="True" Placeholder="Enter Password" />
+        <Button Command="{Binding LoginCommand}"
             x:Name="Login"
             HorizontalOptions="Center"
-            Text="Login"
-            />
+            Text="Login" />
+        <Label Text="jj" TextColor="Aquamarine" />
     </VerticalStackLayout>
 </ContentPage>

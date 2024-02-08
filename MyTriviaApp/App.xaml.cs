@@ -1,4 +1,5 @@
 ﻿using MyTriviaApp.ViewModels;
+using MyTriviaApp.Views;
 
 namespace MyTriviaApp
 {
@@ -8,7 +9,7 @@ namespace MyTriviaApp
         {
             InitializeComponent();
 
-            MainPage = new LoginViewModel();
+            MainPage = new LoginPage();
         }
     }
 }
