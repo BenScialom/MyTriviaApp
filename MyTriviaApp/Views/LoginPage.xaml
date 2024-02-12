@@ -19,6 +19,6 @@
             x:Name="Login"
             HorizontalOptions="Center"
             Text="Login" />
-        <Label Text="jj" TextColor="Aquamarine" />
+        <Label Text="{Binding }" TextColor="Aquamarine" />
     </VerticalStackLayout>
 </ContentPage>

@@ -20,6 +20,7 @@ namespace MyTriviaApp.Services
         private void FillList()
         {
             users.Add(new User { Password = "1234", UserName = "Ben" });
+            users.Add(new User { Password = "formula1",UserName="Admin" });
         }
        
         public bool Login(string user, string pass)
