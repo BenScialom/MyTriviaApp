@@ -28,7 +28,10 @@ namespace MyTriviaApp.ViewModels
         {
            Service x=new Service();
             bool result=x.Login(UserName, Password);
-
+            if (result == true)
+            {
+                
+            }
         }
     }
 }
