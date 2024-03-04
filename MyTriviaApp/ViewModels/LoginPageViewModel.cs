@@ -8,7 +8,7 @@ using MyTriviaApp.Services;
 
 namespace MyTriviaApp.ViewModels
 {
-    internal class LoginPageViewModel:ViewModel
+    public class LoginPageViewModel:ViewModel
     {
         
         private string username;

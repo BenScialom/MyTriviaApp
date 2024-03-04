@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
+using Microsoft.Extensions.Logging;
+using MyTriviaApp.ViewModels;
+using MyTriviaApp.Views;
+using MyTriviaApp.Services;
 
 namespace MyTriviaApp
 {
@@ -14,9 +18,27 @@ namespace MyTriviaApp
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+            builder.Services.AddSingleton<Service>();
+
+      
+            builder.Services.AddTransient<LoginPageViewModel>();
+            builder.Services.AddTransient<BestScoresPageViewModel>();
+            builder.Services.AddTransient<UserAdminPageViewModel>();
+            builder.Services.AddTransient<UserQuestionsPageViewModel>();
+            builder.Services.AddTransient<ApproveQuestionsPageViewModel>();
+
+
+
+           
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<BestScoresPage>();
+            builder.Services.AddTransient<ApproveQuestionsPage>();
+            builder.Services.AddTransient<UserQuestionsPage>();
+            builder.Services.AddTransient<UserAdminPage>();
+;
 
 #if DEBUG
-		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

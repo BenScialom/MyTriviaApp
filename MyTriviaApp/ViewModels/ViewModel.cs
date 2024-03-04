@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyTriviaApp.ViewModels
 {
-    internal class ViewModel: INotifyPropertyChanged
+    public class ViewModel: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

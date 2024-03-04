@@ -9,7 +9,7 @@ using MyTriviaApp.Services;
 namespace MyTriviaApp.ViewModels
 {
         [QueryProperty(nameof(Question),"question")]
-    internal class ApproveQuestionsPageViewModel:ViewModel
+    public class ApproveQuestionsPageViewModel:ViewModel
     {
         private Question question;
         public Question Question { get=> question; set { question = value; OnPropertyChanged(); } }
