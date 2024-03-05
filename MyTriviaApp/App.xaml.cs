@@ -1,4 +1,5 @@
-﻿using MyTriviaApp.ViewModels;
+﻿using MyTriviaApp.Services;
+using MyTriviaApp.ViewModels;
 using MyTriviaApp.Views;
 
 namespace MyTriviaApp
@@ -9,7 +10,17 @@ namespace MyTriviaApp
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new AppShell();
+        }
+        private void RoutingPages()
+        {
+            Routing.RegisterRoute("ApproveQuestions", typeof(ApproveQuestionsPage));
+            Routing.RegisterRoute("BestScores", typeof(BestScoresPage));
+            Routing.RegisterRoute("Login", typeof(LoginPage));
+            Routing.RegisterRoute("UserAdmin", typeof(UserAdminPage));
+            Routing.RegisterRoute("UserQuestions", typeof(UserQuestionsPage));
+          
+
         }
     }
 }

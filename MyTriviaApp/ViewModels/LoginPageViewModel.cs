@@ -18,16 +18,17 @@ namespace MyTriviaApp.ViewModels
         public ICommand LoginCommand {  get; set; }
         public ICommand CancelCommand {  get; set; }
         private Color color;
-
-        public LoginPageViewModel() 
+        private Service s;
+        public LoginPageViewModel(Service service) 
         {
+            s=service;  
             LoginCommand = new Command(Login, () => { return !string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password); });
         }
 
         private void Login()
         {
-           Service x=new Service();
-            bool result=x.Login(UserName, Password);
+          
+            bool result=s.Login(UserName, Password);
           
         }
     }

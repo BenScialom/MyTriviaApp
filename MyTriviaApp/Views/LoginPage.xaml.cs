@@ -4,9 +4,9 @@ namespace MyTriviaApp.Views;
 
 public partial class LoginPage : ContentPage
 {
-	public LoginPage()
+	public LoginPage(LoginPageViewModel vm)
 	{
 		InitializeComponent();
-		this.BindingContext = new LoginPageViewModel();
+		this.BindingContext = vm;
 	}
 }
