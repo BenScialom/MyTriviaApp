@@ -71,6 +71,11 @@ namespace MyTriviaApp.Services
             //}
             //return false;
         }
+        public async Task<List<Question>> GetQuestion()
+        {
+            await Task.Delay(1000);
+            return questions.ToList();
+        }
 
     }
 }
