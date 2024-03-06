@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyTriviaApp.Views.ApproveQuestionsPage"
-             xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
- x:DataType="vm:ApproveQuestionsPageViewModel"
-             Title="ApproveQuestionsPage">
-   
+<ContentPage
+    x:Class="MyTriviaApp.Views.ApproveQuestionsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
+    Title="ApproveQuestionsPage"
+    x:DataType="vm:ApproveQuestionsPageViewModel">
+
+    <ScrollView>
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreashCommand}">
+            <VerticalStackLayout>
+                <Picker
+                    Title="בחר נושא"
+                    ItemDisplayBinding="{Binding SelectedSubject}"
+                    ItemsSource="{Binding questions}"
+                    SelectedItem="{Binding SelectedSubject}"/>
+                <CollectionView x:Name="collection" ItemsSource="{Binding questions}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="Models:Questions"
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </VerticalStackLayout>
+        </RefreshView>
+    </ScrollView>
     
 </ContentPage>

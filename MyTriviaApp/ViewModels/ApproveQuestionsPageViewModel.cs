@@ -15,17 +15,18 @@ namespace MyTriviaApp.ViewModels
     {
     private Service service;
         private Question question;
-       
+        private bool isRefreshing;
+        public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; OnPropertyChanged(); } }
         public ObservableCollection<Question> questions { get; set; }
-        public Subject SelectedSubject { get; set; }
+        public object SelectedSubject { get; set; }
         private int selectedIndex;
         public int SelectedIndex { get => selectedIndex; set { selectedIndex = value; OnPropertyChanged(); } }
        
-        public ICommand ApproveQuestionComman { get; private set; }
-      public ICommand DisallowCoomand {  get; private set; }
+        public ICommand ApproveQuestionCommand { get; private set; }
+      public ICommand RejectCommand {  get; private set; }
         public ICommand LoadQuestionsCommand { get; private set; }
         public ICommand FilterCommand { get; private set; }
-    
+      public ICommand RefreashCommand { get; private set; } 
         private List<Question> fullList;
         public ApproveQuestionsPageViewModel(Service s)
         {
@@ -34,17 +35,17 @@ namespace MyTriviaApp.ViewModels
             questions.Clear();
             
             questions=new ObservableCollection<Question>(service.GetPendingQuestion());
-            LoadQuestionsCommand = new Command(async () => await ApproveQuestions());
-        
-           DisallowCoomand=new Command((object obj) => { Question qu = (Question)obj; questions.Remove(qu); fullList.Remove(qu); });
+            ApproveQuestionCommand = new Command(async () => await ApproveQuestions());
+            RefreashCommand = new Command(async (object obj) => Refresh());
+           RejectCommand=new Command((object obj) => { Question qu = (Question)obj; questions.Remove(qu); fullList.Remove(qu); });
 
             FilterCommand = new Command(() =>
             {
                 try
                 {
-                    var SelectedSubject = fullList.Where(x => x.Subject == SelectedSubject.ToList());
+                    var SelectedSubjectsQuestions = fullList.Where(x => x.Subject == (Subject)SelectedSubject).ToList();
                     questions.Clear();
-                    foreach (var question in SelectedSubject)
+                    foreach (var question in SelectedSubjectsQuestions)
                     {
                         questions.Add(question);
                     }
@@ -53,7 +54,7 @@ namespace MyTriviaApp.ViewModels
             });
         }
 
-    
+
         private async Task ApproveQuestions()
         {
             //var list = await service.GetPendingQuestion();
@@ -66,7 +67,20 @@ namespace MyTriviaApp.ViewModels
             foreach(Question question in service.GetPendingQuestion())
             {
                 questions.Add(question);
+                service.ApproveQuestion(question);
             }
+        }
+        private async void DeclineQuestion(object obj)
+        {
+            service.DeclineQuestion(((Question)obj));
+            Refresh();
+        }
+
+        private async void Refresh()
+        {
+           IsRefreshing = true;
+            SelectedSubject = null;
+            questions=new ObservableCollection<Question>(service.GetPendingQuestion());
         }
     }
 }

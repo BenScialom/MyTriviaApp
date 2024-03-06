@@ -82,7 +82,11 @@ namespace MyTriviaApp.Services
         }
         public void ApproveQuestion(Question q)
         {
-            q.Status=
+            q.Status=statuses.Where(x=>x.StatusId==2).FirstOrDefault();
+        }
+        public void DeclineQuestion(Question q)
+        {
+            q.Status=statuses.Where(x=>x.StatusId==3).FirstOrDefault();
         }
     }
 }
