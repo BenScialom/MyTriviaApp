@@ -1,9 +1,12 @@
+using MyTriviaApp.ViewModels;
+
 namespace MyTriviaApp.Views;
 
 public partial class BestScoresPage : ContentPage
 {
-	public BestScoresPage()
+	public BestScoresPage(BestScoresPageViewModel vm)
 	{
 		InitializeComponent();
+		this.BindingContext = vm;
 	}
 }

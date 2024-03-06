@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
 using MyTriviaApp.Services;
 
 namespace MyTriviaApp.ViewModels
 {
     public class LoginPageViewModel:ViewModel
     {
-        
+        private Service service;
         private string username;
         private string password;
         public string UserName { get{ return username; } set { username = value; OnPropertyChanged(); ((Command)LoginCommand).ChangeCanExecute(); } }
@@ -19,15 +20,16 @@ namespace MyTriviaApp.ViewModels
         public ICommand CancelCommand {  get; set; }
         private Color color;
 
-        public LoginPageViewModel() 
+        public LoginPageViewModel(Service s) 
         {
+            service = s;
             LoginCommand = new Command(Login, () => { return !string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password); });
         }
 
         private void Login()
         {
-           Service x=new Service();
-            bool result=x.Login(UserName, Password);
+           
+            bool result=service.Login(UserName, Password);
           
         }
     }

@@ -76,6 +76,9 @@ namespace MyTriviaApp.Services
             await Task.Delay(1000);
             return questions.ToList();
         }
-
+        public List<Question> GetPendingQuestion()
+        {
+            return questions.Where(x=>x.Status.StatusId==1).ToList();   
+        }
     }
 }
