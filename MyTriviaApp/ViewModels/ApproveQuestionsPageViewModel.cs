@@ -35,7 +35,7 @@ namespace MyTriviaApp.ViewModels
             
             questions=new ObservableCollection<Question>(service.GetPendingQuestion());
             LoadQuestionsCommand = new Command(async () => await ApproveQuestions());
-            ApproveQuestionComman=new Command(async (Object obj)=> ApproveQuestions());
+        
            DisallowCoomand=new Command((object obj) => { Question qu = (Question)obj; questions.Remove(qu); fullList.Remove(qu); });
 
             FilterCommand = new Command(() =>

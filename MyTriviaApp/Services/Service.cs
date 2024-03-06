@@ -80,5 +80,9 @@ namespace MyTriviaApp.Services
         {
             return questions.Where(x=>x.Status.StatusId==1).ToList();   
         }
+        public void ApproveQuestion(Question q)
+        {
+            q.Status=
+        }
     }
 }
