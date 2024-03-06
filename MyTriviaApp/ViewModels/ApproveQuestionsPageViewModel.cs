@@ -40,7 +40,7 @@ namespace MyTriviaApp.ViewModels
             {
                 try
                 {
-                    var SelectedSubject = fullList.Where(x => x.Subject == (SelectedSubject).ToList() );
+                    var SelectedSubject = fullList.Where(x => x.Subject == SelectedSubject.ToList() );
                 }
             }
         }
