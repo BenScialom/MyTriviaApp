@@ -18,7 +18,8 @@ namespace MyTriviaApp.ViewModels
         private bool isRefreshing;
         public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; OnPropertyChanged(); } }
         public ObservableCollection<Question> questions { get; set; }
-        public object SelectedSubject { get; set; }
+        private Subject selectedsubject;
+        public Subject SelectedSubject { get { return selectedsubject; } set { selectedsubject = value; OnPropertyChanged(); } }
         private int selectedIndex;
         public int SelectedIndex { get => selectedIndex; set { selectedIndex = value; OnPropertyChanged(); } }
        
@@ -28,12 +29,13 @@ namespace MyTriviaApp.ViewModels
         public ICommand FilterCommand { get; private set; }
       public ICommand RefreashCommand { get; private set; } 
         private List<Question> fullList;
+        public List<Subject> subjects { get; set; }
         public ApproveQuestionsPageViewModel(Service s)
         {
             service = s;
             questions = new ObservableCollection<Question>();
             questions.Clear();
-            
+            subjects = new List<Subject>(service.subjects);
             questions=new ObservableCollection<Question>(service.GetPendingQuestion());
             ApproveQuestionCommand = new Command(async () => await ApproveQuestions());
             RefreashCommand = new Command(async (object obj) => Refresh());

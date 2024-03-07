@@ -11,11 +11,11 @@ namespace MyTriviaApp.Services
 {
     public class Service
     {
-       List<Player> players ;
-        List<Question> questions ;
-        List<Rank> ranks;
-        List<Status> statuses ;
-        List<Subject> subjects ;
+       public List<Player> players ;
+       public List<Question> questions ;
+       public List<Rank> ranks;
+       public List<Status> statuses ;
+       public List<Subject> subjects ;
        
         public Service()
         {

@@ -3,21 +3,82 @@
     x:Class="MyTriviaApp.Views.ApproveQuestionsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Models="clr-namespace:MyTriviaApp.Models"
     xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
     Title="ApproveQuestionsPage"
     x:DataType="vm:ApproveQuestionsPageViewModel">
 
-    <ScrollView>
-        <RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreashCommand}">
+    <ScrollView x:Name="scrlview" x:DataType="vm:ApproveQuestionsPageViewModel">
+        <RefreshView Command="{Binding RefreashCommand}" IsRefreshing="{Binding IsRefreshing}">
             <VerticalStackLayout>
                 <Picker
                     Title="בחר נושא"
-                    ItemDisplayBinding="{Binding SelectedSubject}"
-                    ItemsSource="{Binding questions}"
-                    SelectedItem="{Binding SelectedSubject}"/>
+                    x:DataType="Models:Subject"
+                    ItemDisplayBinding="{Binding SubjectName}"
+                    ItemsSource="{Binding BindingContext.subjects, Source={x:Reference scrlview}}"
+                    SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"
+                    TextColor="Black" />
+                <Label Text="{Binding SelectedSubject.SubjectName}" />
                 <CollectionView x:Name="collection" ItemsSource="{Binding questions}">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="Models:Questions"
+                        <DataTemplate x:DataType="Models:Question">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItem
+                                        Command="{Binding Source={x:Reference collection}, Path=BindingContext.ApproveCommand}"
+                                        CommandParameter="{Binding .}"
+                                        IconImageSource="https://png.pngtree.com/png-vector/20210212/ourmid/pngtree-green-correct-icon-png-image_2912233.jpg" />
+                                    <SwipeItem
+                                        Command="{Binding Source={x:Reference collection}, Path=BindingContex.RejectCommand}"
+                                        CommandParameter="{Binding .}"
+                                        IconImageSource="https://png.pngtree.com/element_our/20200610/ourmid/pngtree-wrong-number-image_2248568.jpg" />
+                                </SwipeView.RightItems>
+                                <Border Margin="4">
+                                    <VerticalStackLayout x:DataType="Models:Question">
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Subject: " />
+                                                    <Span Text="{Binding Subject.SubjectName}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Right answear: " />
+                                                    <Span Text="{Binding RightA}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="wrong answear1: " />
+                                                    <Span Text="{Binding WrongA1}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="wrong answear2: " />
+                                                    <Span Text="{Binding WrongA2}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="wrong answear3: " />
+                                                    <Span Text="{Binding WrongA3}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </SwipeView>
+                        </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
@@ -25,5 +86,5 @@
             </VerticalStackLayout>
         </RefreshView>
     </ScrollView>
-    
+
 </ContentPage>
