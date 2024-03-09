@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
              xmlns:models="clr-namespace:MyTriviaApp.Models"
  x:DataType="vm:BestScoresPageViewModel"  
-             Title="BestScoresPage">
+             Title="Best Scores Page">
 
 
 

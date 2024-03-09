@@ -5,11 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MyTriviaApp"
     xmlns:views="clr-namespace:MyTriviaApp.Views"
+    
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="ApproveQuestionsPage"
-        ContentTemplate="{DataTemplate views:ApproveQuestionsPage}"
-        Route="LoginPage" />
+        Title="Menu Page"
+        ContentTemplate="{DataTemplate views:MenuPage}"
+        Route="Menu" />
 
 </Shell>

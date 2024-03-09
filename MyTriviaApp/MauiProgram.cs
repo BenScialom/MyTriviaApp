@@ -27,7 +27,7 @@ namespace MyTriviaApp
             builder.Services.AddTransient<UserQuestionsPageViewModel>();
             builder.Services.AddTransient<ApproveQuestionsPageViewModel>();
             builder.Services.AddTransient<PlayerDetailsPageViewModel>();
-
+            builder.Services.AddTransient<MenuPageViewModel>();
 
 
 
@@ -37,7 +37,7 @@ namespace MyTriviaApp
             builder.Services.AddTransient<UserQuestionsPage>();
             builder.Services.AddTransient<UserAdminPage>();
             builder.Services.AddTransient<PlayerDetailsPage>();
-            ;
+            builder.Services.AddTransient<MenuPage>();
 
 #if DEBUG
             builder.Logging.AddDebug();
