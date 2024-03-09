@@ -1,3 +1,5 @@
+using MyTriviaApp.ViewModels;
+
 namespace MyTriviaApp.Views;
 using MyTriviaApp.ViewModels;
 public partial class ApproveQuestionsPage : ContentPage

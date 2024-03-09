@@ -11,6 +11,7 @@ namespace MyTriviaApp
             InitializeComponent();
 
             MainPage = new AppShell();
+            MainPage = new AppShell();
         }
         private void RoutingPages()
         {

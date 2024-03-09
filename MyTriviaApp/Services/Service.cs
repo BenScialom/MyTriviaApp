@@ -76,6 +76,17 @@ namespace MyTriviaApp.Services
             await Task.Delay(1000);
             return questions.ToList();
         }
-
+        public List<Question> GetPendingQuestion()
+        {
+            return questions.Where(x=>x.Status.StatusId==1).ToList();   
+        }
+        public void ApproveQuestion(Question q)
+        {
+            q.Status=statuses.Where(x=>x.StatusId==2).FirstOrDefault();
+        }
+        public void DeclineQuestion(Question q)
+        {
+            q.Status=statuses.Where(x=>x.StatusId==3).FirstOrDefault();
+        }
     }
 }
