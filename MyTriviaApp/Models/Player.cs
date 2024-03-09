@@ -29,4 +29,5 @@ public partial class Player
     [ForeignKey("RankId")]
     [InverseProperty("Players")]
     public virtual Rank Rank { get; set; } = null!;
+    public int GetPlayerId(int PlayerId) { return PlayerId; }
 }

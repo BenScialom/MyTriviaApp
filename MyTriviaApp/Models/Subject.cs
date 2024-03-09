@@ -17,4 +17,5 @@ public partial class Subject
 
     [InverseProperty("Subject")]
     public virtual ICollection<Question> Questions { get; } = new List<Question>();
+    public int GetSubjectsId(int SubjectId) { return SubjectId; }
 }

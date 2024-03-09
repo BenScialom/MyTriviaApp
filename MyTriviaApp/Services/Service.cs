@@ -11,16 +11,17 @@ namespace MyTriviaApp.Services
 {
     public class Service
     {
-       List<Player> players ;
-        List<Question> questions ;
-        List<Rank> ranks;
-        List<Status> statuses ;
-        List<Subject> subjects ;
+       public List<Player> players ;
+       public List<Question> questions ;
+       public List<Rank> ranks;
+       public List<Status> statuses ;
+       public List<Subject> subjects ;
        
         public Service()
         {
            this.players=new List<Player>();
             this.questions = new List<Question>();
+           
             this.ranks = new List<Rank>();
             this.statuses = new List<Status>();
             this.subjects = new List<Subject>();
@@ -28,8 +29,16 @@ namespace MyTriviaApp.Services
             FillSubject();
             FillStatus();
             FillPlayers();
+            FillQuestions();
             
 
+        }
+
+        private void FillQuestions()
+        {
+            questions.Add(new Question() { QuestionId = 1, StatusId = statuses[1].GetStatusId(1),SubjectId = subjects[0].GetSubjectsId(0), PlayerId = players[0].GetPlayerId(0),Question1="Who won the UEFA champions league last season?",RightA="Munchester City",WrongA1="Real Madrid",WrongA2="Liverpool",WrongA3="Ac Milan", Player = players[0], Status = statuses[1], Subject = subjects[0] });
+            questions.Add(new Question() { QuestionId = 2, StatusId = statuses[0].GetStatusId(0), SubjectId = subjects[1].GetSubjectsId(1), PlayerId = players[0].GetPlayerId(0), Question1 = "When was WW2 ended?", RightA = "1945", WrongA1 = "1333", WrongA2 = "1947", WrongA3 = "1939", Player = players[0], Status = statuses[0], Subject = subjects[1] });
+            questions.Add(new Question() { QuestionId = 3, StatusId = statuses[1].GetStatusId(1), SubjectId = subjects[2].GetSubjectsId(2), PlayerId = players[0].GetPlayerId(0), Question1 = "Who is the president of the USA", RightA = "Joe Biden", WrongA1 = "Hilery Clinton", WrongA2 = "Donald Trump", WrongA3 = "Barak Obama", Player = players[0], Status = statuses[1], Subject = subjects[2] });
         }
 
         private void FillRank()
@@ -52,7 +61,7 @@ namespace MyTriviaApp.Services
         }
         private void FillPlayers()
         {
-            players.Add(new Player { Mail="Ben.Sha@gmail.com", Name = "Ben", RankId = ranks[0].GetRankId(0), Points = 0, Password = "123", Rank = ranks[0] });
+            players.Add(new Player { Mail="Ben.Sha@gmail.com", Name = "Ben", RankId = ranks[0].GetRankId(0), Points = 99, Password = "123", Rank = ranks[0] });
             
             //להוסיף עוד שחקן
         }

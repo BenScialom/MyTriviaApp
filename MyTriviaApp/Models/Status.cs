@@ -17,4 +17,5 @@ public partial class Status
 
     [InverseProperty("Status")]
     public virtual ICollection<Question> Questions { get; } = new List<Question>();
+    public int GetStatusId(int StatusId) { return StatusId; }
 }
