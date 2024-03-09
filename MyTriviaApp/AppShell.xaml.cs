@@ -1,5 +1,5 @@
 ﻿using MyTriviaApp.ViewModels;
-
+using MyTriviaApp.Views;
 namespace MyTriviaApp
 {
     public partial class AppShell : Shell
@@ -12,12 +12,12 @@ namespace MyTriviaApp
 
         private void RoutingPages()
         {
-            Routing.RegisterRoute("ApproveQuestions", typeof(ApproveQuestionsPageViewModel));
-            Routing.RegisterRoute("BestScores", typeof(BestScoresPageViewModel));
-            Routing.RegisterRoute("LoginPage", typeof(LoginPageViewModel));
-            Routing.RegisterRoute("UserAdmin", typeof(UserAdminPageViewModel));
-            Routing.RegisterRoute("UserQuestions", typeof(UserQuestionsPageViewModel));
-           
+            Routing.RegisterRoute("ApproveQuestions", typeof(ApproveQuestionsPage));
+            Routing.RegisterRoute("BestScores", typeof(BestScoresPage));
+            Routing.RegisterRoute("LoginPage", typeof(LoginPage));
+            Routing.RegisterRoute("UserAdmin", typeof(UserAdminPage));
+            Routing.RegisterRoute("UserQuestions", typeof(UserQuestionsPage));
+            Routing.RegisterRoute("PlayerDetails", typeof(PlayerDetailsPage));
         }
     }
 }

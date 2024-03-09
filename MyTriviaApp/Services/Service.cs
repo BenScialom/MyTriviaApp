@@ -61,13 +61,12 @@ namespace MyTriviaApp.Services
         }
         private void FillPlayers()
         {
-            players.Add(new Player { Mail="Ben.Sha@gmail.com", Name = "Ben", RankId = ranks[0].GetRankId(0), Points = 99, Password = "123", Rank = ranks[0] });
-            
-            //להוסיף עוד שחקן
+            players.Add(new Player { PlayerId = 1, Mail = "Ben.Sha@gmail.com", Name = "Ben", RankId = ranks[0].GetRankId(0), Points = 0, Password = "123", Rank = ranks[0] });
+            players.Add(new Player { PlayerId = 2, Mail = "itamar@gmail.com", Name = "Itamar", RankId = ranks[0].GetRankId(0), Points = 100, Password = "123", Rank = ranks[0] });
+            players.Add(new Player { PlayerId = 3, Mail = "ran@gmail.com", Name = "Ran", RankId = ranks[1].GetRankId(1), Points = 15, Password = "123", Rank = ranks[1] });
         }
 
-       //להוסיף fill questions
-       //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+      
         public bool Login(string user, string pass)
         {
 
@@ -96,6 +95,16 @@ namespace MyTriviaApp.Services
         public void DeclineQuestion(Question q)
         {
             q.Status=statuses.Where(x=>x.StatusId==3).FirstOrDefault();
+        }
+        public async Task<List<Player>> GetPlayersDeccending()
+        {
+            await Task.Delay(1000);
+            return players.OrderByDescending(x => x.Points).ToList();
+        }
+        public async Task<List<Player>> GetPlayersAccending()
+        {
+            await Task.Delay(1000);
+            return players.OrderBy(x => x.Points).ToList();
         }
     }
 }

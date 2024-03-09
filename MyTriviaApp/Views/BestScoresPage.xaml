@@ -3,12 +3,159 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyTriviaApp.Views.BestScoresPage"
              xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
- x:DataType="vm:BestScoresPageViewModel"
+             xmlns:models="clr-namespace:MyTriviaApp.Models"
+ x:DataType="vm:BestScoresPageViewModel"  
              Title="BestScoresPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+
+
+    <StackLayout>
+        <Label Margin="20,20,20,20" HorizontalOptions="Center">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="Bold,Italic" Text="Best Scores List" FontSize="40" TextColor="Salmon" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Grid
+    HorizontalOptions="Center"
+    RowDefinitions="*,*"
+    RowSpacing="2">
+            <HorizontalStackLayout
+        Margin="15"
+        HorizontalOptions="Center"
+        Spacing="10">
+
+                <Button
+BackgroundColor="Coral"
+Command="{Binding RefreshCommand}"
+CornerRadius="20"
+Text="Refresh"
+WidthRequest="130" 
+                         HeightRequest="45"
+            BorderColor="Black"
+            BorderWidth="2"
+                        TextColor="White"
+                         FontAttributes="Bold"/>
+                <Button
+BackgroundColor="Coral"
+Command="{Binding LoadPlayersCommand}"
+CornerRadius="20"
+Text= "Load Players"
+WidthRequest="130" 
+                         HeightRequest="45"
+            BorderColor="Black"
+            BorderWidth="2"
+                        TextColor="White"
+                        FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+        </Grid>
+        <Grid
+HorizontalOptions="Center"
+RowDefinitions="*,*"
+RowSpacing="2">
+
+            <HorizontalStackLayout  Margin="15"
+ HorizontalOptions="Center"
+ Spacing="10">
+                <Button
+BackgroundColor="Coral"
+Command="{Binding ShowPlayerCommand}"
+CornerRadius="20"
+Text="Show Player"
+WidthRequest="130" 
+                         HeightRequest="45"
+            BorderColor="Black"
+            BorderWidth="2"
+                        TextColor="White"
+                         FontAttributes="Bold"
+                    />
+                <Button
+BackgroundColor="Coral"
+Command="{Binding FilterCommand}"
+CornerRadius="20"
+Text="Filter"
+WidthRequest="130" 
+                        HeightRequest="45"
+            BorderColor="Black"
+            BorderWidth="2"
+                        TextColor="White"
+                         FontAttributes="Bold"/>
+                <Button
+BackgroundColor="Coral"
+Command="{Binding ClearFilterCommand}"
+CornerRadius="20"
+Text="Clear Filter"
+WidthRequest="130" 
+                         HeightRequest="45"
+            BorderColor="Black"
+            BorderWidth="2"
+                        TextColor="White"
+                         FontAttributes="Bold"/>
+                <Picker
+Title="Choose Rank:"  
+ItemsSource="{Binding RanksCollection}"
+SelectedIndex="{Binding SelectedIndex}"
+SelectedItem="{Binding SelectedRank}" />
+
+            </HorizontalStackLayout>
+        </Grid>
+
+
+
+
+
+        <Frame BorderColor="SandyBrown" Margin="20,20,20,20">
+            <ScrollView>
+                <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+
+
+                    <CollectionView x:Name="colview" ItemsSource="{Binding Players}" EmptyView="Players not found." SelectionMode="Single" SelectedItem="{Binding SelectedPlayer}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="5" Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+
+                            <DataTemplate x:DataType="models:Player">
+                                <Grid>
+                                    <Frame BorderColor="DarkBlue" CornerRadius="20" BackgroundColor="CadetBlue" Margin="60,5,60,5">
+                                        <StackLayout Margin="20,0,20,0">
+
+                                            <Label Margin="20,0,0,0">
+
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span FontAttributes="Bold" Text="Name: "/>
+                                                        <Span Text="{Binding Name}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+
+                                            <Label Margin="20,0,0,0">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span FontAttributes="Bold" Text="Points: "/>
+                                                        <Span Text="{Binding Points}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </RefreshView>
+
+
+            </ScrollView>
+        </Frame>
+    </StackLayout>
+
+
+
 </ContentPage>

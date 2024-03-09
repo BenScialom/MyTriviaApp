@@ -8,7 +8,7 @@ namespace MyTriviaApp.Models;
 
 public partial class Player
 {
-   
+   public int PlayerId { get; set; }
 
     [StringLength(30)]
     public string Mail { get; set; } = null!;

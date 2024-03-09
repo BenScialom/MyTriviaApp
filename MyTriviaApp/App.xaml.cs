@@ -11,17 +11,8 @@ namespace MyTriviaApp
             InitializeComponent();
 
             MainPage = new AppShell();
-            MainPage = new AppShell();
+       
         }
-        private void RoutingPages()
-        {
-            Routing.RegisterRoute("ApproveQuestions", typeof(ApproveQuestionsPage));
-            Routing.RegisterRoute("BestScores", typeof(BestScoresPage));
-            Routing.RegisterRoute("Login", typeof(LoginPage));
-            Routing.RegisterRoute("UserAdmin", typeof(UserAdminPage));
-            Routing.RegisterRoute("UserQuestions", typeof(UserQuestionsPage));
-          
-
-        }
+     
     }
 }

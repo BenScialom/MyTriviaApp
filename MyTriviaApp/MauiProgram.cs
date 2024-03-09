@@ -26,16 +26,18 @@ namespace MyTriviaApp
             builder.Services.AddTransient<UserAdminPageViewModel>();
             builder.Services.AddTransient<UserQuestionsPageViewModel>();
             builder.Services.AddTransient<ApproveQuestionsPageViewModel>();
+            builder.Services.AddTransient<PlayerDetailsPageViewModel>();
 
 
 
-           
+
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<BestScoresPage>();
             builder.Services.AddTransient<ApproveQuestionsPage>();
             builder.Services.AddTransient<UserQuestionsPage>();
             builder.Services.AddTransient<UserAdminPage>();
-;
+            builder.Services.AddTransient<PlayerDetailsPage>();
+            ;
 
 #if DEBUG
             builder.Logging.AddDebug();

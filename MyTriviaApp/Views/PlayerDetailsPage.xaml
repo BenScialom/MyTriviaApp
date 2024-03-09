@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyTriviaApp.Views.PlayerDetailsPage"
+             xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
+Title="{Binding Title}"
+x:DataType="vm:PlayerDetailsPageViewModel"
+             >
+
+    <Frame BorderColor="DarkBlue" CornerRadius="20" BackgroundColor="CadetBlue" Margin="60,70,60,70">
+        <StackLayout HorizontalOptions="Center" >
+
+            <Label Margin="0,60,0,20" FontSize="30">
+
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" Text="Name: "/>
+                        <Span Text="{Binding Player.Name}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Label Margin="0,20,0,20" FontSize="30">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" Text="Rank: "/>
+                        <Span Text="{Binding Player.Rank.RankName}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label Margin="0,20,0,20" FontSize="30">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" Text="ID: "/>
+                        <Span Text="{Binding Player.PlayerId}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </StackLayout>
+    </Frame>
+</ContentPage>
