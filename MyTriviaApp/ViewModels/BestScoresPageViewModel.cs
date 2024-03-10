@@ -58,7 +58,7 @@ namespace MyTriviaApp.ViewModels
                 {
                     Dictionary<string, object> data = new Dictionary<string, object>();
                     data.Add("Player", selectedPlayer);
-                    await AppShell.Current.GoToAsync($"PlayerDetailes?Title={selectedPlayer.Name}'s Details", data);
+                    await AppShell.Current.GoToAsync($"PlayerDetails?Title={selectedPlayer.Name}'s Details", data);
                     selectedPlayer = null;
                 }
             }

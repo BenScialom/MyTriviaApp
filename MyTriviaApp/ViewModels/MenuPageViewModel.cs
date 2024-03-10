@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace MyTriviaApp.ViewModels
 {
-    public class MenuPageViewModel
+    public class MenuPageViewModel:ViewModel
     {
         public ICommand GoToPage { get; private set; }
         public MenuPageViewModel() 

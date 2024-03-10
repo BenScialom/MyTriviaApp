@@ -19,6 +19,6 @@
             x:Name="Login"
             HorizontalOptions="Center"
             Text="Login" />
-        <Label Text="{Binding }" TextColor="Aquamarine" />
+        <!--<Label Text="{Binding errorMessage}" TextColor="Aquamarine" />-->
     </VerticalStackLayout>
 </ContentPage>
