@@ -28,12 +28,14 @@ namespace MyTriviaApp.ViewModels
            
         }
 
-        private void Login()
+        private async void Login()
         {
 
             bool result = service.Login(UserName, Password);
-            if (result) 
-            GoToPage = new Command<string>(async (x) => { await NavigateToPage(x); });
+            if (result)
+            {
+                await AppShell.Current.GoToAsync("Menu");
+            }
           
           
         }

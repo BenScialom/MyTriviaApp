@@ -18,7 +18,7 @@
         <Button
             BackgroundColor="CadetBlue"
             Command="{Binding GoToPage}"
-            CommandParameter="ApproveQuestion"
+            CommandParameter="ApproveQuestions"
             Text="Approve Questions Page" />
      
         <Button

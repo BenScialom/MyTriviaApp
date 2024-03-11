@@ -17,7 +17,7 @@ namespace MyTriviaApp.ViewModels
 
         private async Task NavigateToPage(string x)
         {
-           await AppShell.Current.GoToAsync(x);
+            await AppShell.Current.GoToAsync(x);
         }
     }
 }
