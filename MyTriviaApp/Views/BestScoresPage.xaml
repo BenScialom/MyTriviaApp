@@ -59,6 +59,7 @@ RowSpacing="2">
             <HorizontalStackLayout  Margin="15"
  HorizontalOptions="Center"
  Spacing="10">
+  
                 <Button
 BackgroundColor="Coral"
 Command="{Binding ShowPlayerCommand}"
@@ -100,6 +101,7 @@ SelectedIndex="{Binding SelectedIndex}"
 SelectedItem="{Binding SelectedRank}" />
 
             </HorizontalStackLayout>
+         
         </Grid>
 
 
