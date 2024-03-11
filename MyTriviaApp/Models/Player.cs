@@ -10,24 +10,23 @@ public partial class Player
 {
    public int PlayerId { get; set; }
 
-    [StringLength(30)]
+  
     public string Mail { get; set; } = null!;
 
-    [StringLength(20)]
+    
     public string Name { get; set; } = null!;
 
     public int RankId { get; set; }
 
     public int Points { get; set; }
 
-    [StringLength(20)]
+   
     public string Password { get; set; } = null!;
 
-    [InverseProperty("Player")]
+    
     public virtual ICollection<Question> Questions { get; } = new List<Question>();
 
-    [ForeignKey("RankId")]
-    [InverseProperty("Players")]
+   
     public virtual Rank Rank { get; set; } = null!;
     public int GetPlayerId(int PlayerId) { return PlayerId; }
 }
