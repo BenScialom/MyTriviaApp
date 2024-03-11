@@ -35,6 +35,7 @@ namespace MyTriviaApp.ViewModels
             service = s;
             questions = new ObservableCollection<Question>();
             questions.Clear();
+            fullList=new List<Question>();
             subjects = new List<Subject>(service.subjects);
             questions=new ObservableCollection<Question>(service.GetPendingQuestion());
             ApproveQuestionCommand = new Command(async () => await ApproveQuestions());
@@ -79,6 +80,7 @@ namespace MyTriviaApp.ViewModels
             {
                 questions.Add(question);
                 service.ApproveQuestion(question);
+                Refresh();
             }
         }
         private async void DeclineQuestion(object obj)

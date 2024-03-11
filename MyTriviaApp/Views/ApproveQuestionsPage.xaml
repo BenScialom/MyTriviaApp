@@ -21,7 +21,7 @@
                     SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"
                     TextColor="Black" />
                 <Button Command="{Binding FilterCommand}" Text="סנן" />
-                <Label Text="{Binding SelectedSubject.SubjectName}" />
+                
                 <CollectionView x:Name="collection" ItemsSource="{Binding questions}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="Models:Question">
