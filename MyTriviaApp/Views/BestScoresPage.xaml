@@ -20,7 +20,7 @@
         </Label>
         <Grid
     HorizontalOptions="Center"
-    RowDefinitions="*,*"
+    RowDefinitions="*,*,*"
     RowSpacing="2">
             <HorizontalStackLayout
         Margin="15"
@@ -60,18 +60,7 @@ RowSpacing="2">
  HorizontalOptions="Center"
  Spacing="10">
   
-                <Button
-BackgroundColor="Coral"
-Command="{Binding ShowPlayerCommand}"
-CornerRadius="20"
-Text="Show Player"
-WidthRequest="130" 
-                         HeightRequest="45"
-            BorderColor="Black"
-            BorderWidth="2"
-                        TextColor="White"
-                         FontAttributes="Bold"
-                    />
+              
                 <Button
 BackgroundColor="Coral"
 Command="{Binding FilterCommand}"
@@ -101,7 +90,20 @@ SelectedIndex="{Binding SelectedIndex}"
 SelectedItem="{Binding SelectedRank}" />
 
             </HorizontalStackLayout>
-         
+            <HorizontalStackLayout>
+                <Button
+BackgroundColor="Coral"
+Command="{Binding ShowPlayerCommand}"
+CornerRadius="20"
+Text="Show Player"
+WidthRequest="130" 
+                         HeightRequest="45"
+            BorderColor="Black"
+            BorderWidth="2"
+                        TextColor="White"
+                         FontAttributes="Bold"
+                    />
+            </HorizontalStackLayout>
         </Grid>
 
 
