@@ -28,11 +28,11 @@
                             <SwipeView>
                                 <SwipeView.RightItems>
                                     <SwipeItem
-                                        Command="{Binding Source={x:Reference colview}, Path=BindingContext.ApproveQuestionCommand}"
+                                        Command="{Binding Source={x:Reference scrlview}, Path=BindingContext.ApproveQuestionCommand}"
                                         CommandParameter="{Binding .}"
                                         IconImageSource="https://png.pngtree.com/png-vector/20210212/ourmid/pngtree-green-correct-icon-png-image_2912233.jpg" />
                                     <SwipeItem
-                                        Command="{Binding Source={x:Reference colview}, Path=BindingContex.RejectCommand}"
+                                        Command="{Binding Source={x:Reference scrlview}, Path=BindingContex.RejectCommand}"
                                         CommandParameter="{Binding .}"
                                         IconImageSource="https://png.pngtree.com/element_our/20200610/ourmid/pngtree-wrong-number-image_2248568.jpg" />
                                 </SwipeView.RightItems>
