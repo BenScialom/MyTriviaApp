@@ -68,7 +68,7 @@ namespace MyTriviaApp.ViewModels
 
         private async Task LoadPlayers()
         {
-            IsRefreshing = false;
+            
             fullList = await service.GetPlayersDeccending();
             Players.Clear();
             foreach (var player in fullList)
@@ -80,6 +80,7 @@ namespace MyTriviaApp.ViewModels
             ((Command)ClearPlayersCommand).ChangeCanExecute();
             ((Command)FilterCommand).ChangeCanExecute();
             ((Command)ClearFilterCommand).ChangeCanExecute();
+           
         }
         private async Task ChangeOrder()
         {
@@ -100,6 +101,9 @@ namespace MyTriviaApp.ViewModels
             else
                 await ChangeOrder();
             IsRefreshing = false;
+            ((Command)ClearPlayersCommand).ChangeCanExecute();
+            ((Command)FilterCommand).ChangeCanExecute();
+            ((Command)ClearFilterCommand).ChangeCanExecute();
         }
         private void ClearPlayers()
         {
