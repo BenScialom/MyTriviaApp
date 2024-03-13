@@ -57,14 +57,12 @@ namespace MyTriviaApp.ViewModels
             //}, () => fullList != null && fullList.Count > 0);
         }
 
-        public async Task FilterQuestions()
+        private async Task FilterQuestions()
         {
-            var filtedlist = new List<Question>();
-            await Task.Delay(1000);
-            questions.Clear();
-            foreach(var question in filtedlist)
+            if (selectedsubject != null)
             {
-                questions.Add(question);
+                foreach (var question in fullList.Where(x => x.Status.StatusId == 3 && x.Subject.SubjectId == ((Subject)SelectedSubject).SubjectId).ToList()) ;
+                questions.Clear();
             }
         }
         private async Task ApproveQuestions()

@@ -20,7 +20,7 @@
                     ItemsSource="{Binding BindingContext.subjects, Source={x:Reference scrlview}}"
                     SelectedItem="{Binding BindingContext.SelectedSubject, Source={x:Reference scrlview}}"
                     TextColor="Black" />
-                <Button Command="{Binding FilterCommand}" Text="סנן" />
+                <Button Command="{Binding FilterCommand}" Text="סנן" BackgroundColor="CadetBlue" HorizontalOptions="Center"/>
                 
                 <CollectionView x:Name="collection" ItemsSource="{Binding questions}">
                     <CollectionView.ItemTemplate>
