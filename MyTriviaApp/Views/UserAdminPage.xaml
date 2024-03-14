@@ -1,9 +1,135 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyTriviaApp.Views.UserAdminPage"
-                         xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
-x:DataType="vm:UserAdminPageViewModel"
-             Title="UserAdminPage">
-    
+
+<ContentPage
+    x:Class="MyTriviaApp.Views.UserAdminPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MyTriviaApp.Models"
+    xmlns:vm="clr-namespace:MyTriviaApp.ViewModels"
+    Title="UserAdminPage"
+    x:DataType="vm:UserAdminPageViewModel"
+    >
+    <VerticalStackLayout>
+
+        <Label
+            FontSize="Large"
+            HorizontalOptions="Center"
+            Text="User Management" />
+        <HorizontalStackLayout Margin="10" HorizontalOptions="Center">
+            <Picker 
+                Title="Selected Rank"
+                ItemsSource="{Binding Ranks}" 
+                ItemDisplayBinding="{Binding RankName}"
+                SelectedItem="{Binding SelectedRank}"/>
+
+            <Button Command="{Binding FilterCommand}" Text="Filter" />
+            <Button
+                BackgroundColor="Red"
+                Command="{Binding ClearFilterCommand}"
+                Text="Reset" />
+        </HorizontalStackLayout>
+
+        <Frame>
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <ScrollView MaximumHeightRequest="200">
+                    <StackLayout x:Name="UsersStackLayout">
+                        <CollectionView
+                        x:Name="colview"
+                        Grid.Row="2"
+                        ItemsSource="{Binding Players}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.EmptyView>
+                                <VerticalStackLayout
+                                    HeightRequest="300"
+                                    VerticalOptions="CenterAndExpand"
+                                    BackgroundColor="MediumPurple"
+                                    HorizontalOptions="CenterAndExpand">
+
+                                    <Label Text="No Players To Show ..."
+                                           FontSize="20"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="CenterAndExpand"/>
+                                </VerticalStackLayout>
+
+
+                            </CollectionView.EmptyView>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Player">
+                                    <SwipeView>
+                                        <SwipeView.LeftItems>
+                                            <SwipeItem Text="Delete" BackgroundColor="Red"             
+                                                   Command="{Binding BindingContext.RemovePlayerCommand, Source={x:Reference colview}}"
+                                                   CommandParameter="{Binding .}"/>
+                                            <SwipeItem Text="Reset Points" BackgroundColor="Green"        
+                                                   Command="{Binding BindingContext.ResetPointsCommand, Source={x:Reference colview}}"
+                                                   CommandParameter="{Binding .}"/>
+                                        </SwipeView.LeftItems>
+                                        <Grid Padding="10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Text="{Binding Name}" 
+                                               Grid.Row="0" Grid.Column="0"
+                                               FontSize="18" FontAttributes="Bold" />
+                                            <Label Text="{Binding Mail}" 
+                                               Grid.Row="0" Grid.Column="1"
+                                               FontSize="14" TextColor="Gray" />
+                                            <Label Text="{Binding Rank.RankName}" 
+                                                   Grid.Row="1" Grid.Column="0"
+                                                   FontSize="16" FontAttributes="Bold" />
+                                            <Label Text="{Binding Points}" 
+                                                   Grid.Row="1" Grid.Column="1"
+                                                   FontSize="16" FontAttributes="Bold" />
+
+                                        </Grid>
+
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+
+                </ScrollView>
+            </RefreshView>
+        </Frame>
+
+        <HorizontalStackLayout Margin="10"  HorizontalOptions="Center">
+            <Button
+                BackgroundColor="Blue"
+                Command="{Binding AddPlayerCommand}"
+                Text="Add Player" />
+            <Grid>
+                <Entry
+                    HorizontalTextAlignment="Center"
+                    Placeholder="Name"
+                    WidthRequest="100"
+                    Text="{Binding PlayerName}"/>
+            </Grid>
+            <Grid>
+                <Entry
+                    HorizontalTextAlignment="Center"
+                    Placeholder="Mail"
+                    WidthRequest="100" 
+                    Text="{Binding PlayerMail}"/>
+            </Grid>
+            <Grid>
+                <Entry
+                    HorizontalTextAlignment="Center"
+                    Placeholder="Password"
+                    WidthRequest="100" 
+                    Text="{Binding PlayerPassword}"/>
+            </Grid>
+        </HorizontalStackLayout>
+        <Label Text="Added Player Successfully" TextColor="Green" IsVisible="{Binding IsAddedMessageSuccess}" HorizontalTextAlignment="Center" />
+        <Label Text="Error ! Player Already Exist" TextColor="Red" IsVisible="{Binding IsAddedMessageError}" HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
 </ContentPage>
