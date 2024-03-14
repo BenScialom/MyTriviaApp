@@ -8,6 +8,7 @@ namespace MyTriviaApp.ViewModels
 {
     public class BestScoresPageViewModel : ViewModel
     {
+        //Itamar
         public ObservableCollection<Player> Players { get; set; }
         private List<Player> fullList;
         public ICommand LoadPlayersCommand { get; private set; }

@@ -13,8 +13,9 @@ namespace MyTriviaApp.ViewModels
         [QueryProperty(nameof(Question),"question")]
     public class ApproveQuestionsPageViewModel:ViewModel
     {
+        //Ben
     private Service service;
-        //private Question question;
+        
         private bool isRefreshing;
         public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; OnPropertyChanged(); } }
         public ObservableCollection<Question> questions { get; set; }
@@ -25,7 +26,7 @@ namespace MyTriviaApp.ViewModels
        
         public ICommand ApproveQuestionCommand { get; private set; }
       public ICommand RejectCommand {  get; private set; }
-        //public ICommand LoadQuestionsCommand { get; private set; }
+        
         public ICommand FilterCommand { get; private set; }
       public ICommand RefreashCommand { get; private set; } 
         private List<Question> fullList;
@@ -67,12 +68,7 @@ namespace MyTriviaApp.ViewModels
         }
         private async Task ApproveQuestions()
         {
-            //var list = await service.GetPendingQuestion();
-            //questions.Clear();
-            //foreach (var question in list)
-            //{
-            //    questions.Add(question);
-            //}
+            
             
             foreach(Question question in service.GetPendingQuestion())
             {

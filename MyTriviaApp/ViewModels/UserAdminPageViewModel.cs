@@ -13,7 +13,7 @@ namespace MyTriviaApp.ViewModels
 {
     public class UserAdminPageViewModel : ViewModel
     {
-
+        //רן
         private Service service;
         private List<Player> fullList;
         private Rank selectedRank;

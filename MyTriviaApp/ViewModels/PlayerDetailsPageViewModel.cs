@@ -8,6 +8,7 @@ using MyTriviaApp.Models;
 
 namespace MyTriviaApp.ViewModels
 {
+    //Itamar
     [QueryProperty(nameof(Player), "Player")]
     [QueryProperty(nameof(Title), "Title")]
     public class PlayerDetailsPageViewModel : ViewModel
