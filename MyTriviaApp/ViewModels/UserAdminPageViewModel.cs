@@ -13,7 +13,7 @@ namespace MyTriviaApp.ViewModels
 {
     public class UserAdminPageViewModel : ViewModel
     {
-        //רן
+
         private Service service;
         private List<Player> fullList;
         private Rank selectedRank;
@@ -164,9 +164,9 @@ namespace MyTriviaApp.ViewModels
             p.Points = 0;
             service.UpdatePlayer(p);
             int pos = fullList.IndexOf(p);
-            fullList.RemoveAt(pos);
-            fullList.Insert(pos, p);
-            await Refresh();
+            Players.RemoveAt(pos);
+            Players.Insert(pos, p);
+            await Refresh(); //אמור לעבוד בגרסה מתקדמת יותר
         }
         private async Task DisplayAddedPlayerMessage(bool isAdded)
         {
