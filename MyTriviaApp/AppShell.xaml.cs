@@ -12,12 +12,12 @@ namespace MyTriviaApp
 
         private void RoutingPages()
         {
-            Routing.RegisterRoute("ApproveQuestions", typeof(ApproveQuestionsPage));
-            Routing.RegisterRoute("BestScores", typeof(BestScoresPage));
+            Routing.RegisterRoute("ApproveQuestions", typeof(ApproveQuestionsPage));//Ben
+            Routing.RegisterRoute("BestScores", typeof(BestScoresPage));//Itamar
             Routing.RegisterRoute("LoginPage", typeof(LoginPage));
             Routing.RegisterRoute("UserAdmin", typeof(UserAdminPage));
            
-            Routing.RegisterRoute("PlayerDetails", typeof(PlayerDetailsPage));
+            Routing.RegisterRoute("PlayerDetails", typeof(PlayerDetailsPage));//Ran
             Routing.RegisterRoute("Menu", typeof(MenuPage));
 
         }
