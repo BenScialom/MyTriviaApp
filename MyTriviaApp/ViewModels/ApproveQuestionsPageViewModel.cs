@@ -19,6 +19,7 @@ namespace MyTriviaApp.ViewModels
         private bool isRefreshing;
         public bool IsRefreshing { get { return isRefreshing; } set { isRefreshing = value; OnPropertyChanged(); } }
         public ObservableCollection<Question> questions { get; set; }
+        
         private Subject selectedsubject;
         public Subject SelectedSubject { get { return selectedsubject; } set { selectedsubject = value; OnPropertyChanged(); } }
         private int selectedIndex;
@@ -43,27 +44,19 @@ namespace MyTriviaApp.ViewModels
             RefreashCommand = new Command(async (object obj) => Refresh());
            RejectCommand=new Command((object obj) => { Question qu = (Question)obj; questions.Remove(qu); fullList.Remove(qu); });
             FilterCommand = new Command(async () => await FilterQuestions());
-            //FilterCommand = new Command(() =>
-            //{
-            //    try
-            //    {
-            //        var SelectedSubjectsQuestions = fullList.Where(x => x.Subject == (Subject)SelectedSubject).ToList();
-            //        questions.Clear();
-            //        foreach (var question in SelectedSubjectsQuestions)
-            //        {
-            //            questions.Add(question);
-            //        }
-            //    }
-            //    catch (Exception ex) { Console.WriteLine(ex.Message); }
-            //}, () => fullList != null && fullList.Count > 0);
+          
         }
 
         private async Task FilterQuestions()
         {
             if (selectedsubject != null)
             {
-                foreach (var question in fullList.Where(x => x.Status.StatusId == 3 && x.Subject.SubjectId == ((Subject)SelectedSubject).SubjectId).ToList()) ;
+                var filteredQuestions = fullList.Where(x => x.Status.StatusId == 3 && x.Subject.SubjectId == SelectedSubject.SubjectId).ToList();
                 questions.Clear();
+                foreach (var question in filteredQuestions)
+                {
+                    questions.Add(question);
+                }
             }
         }
         private async Task ApproveQuestions()
